@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariela & Giovanni — ¡Nos Casamos!</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            50: '#f4f7f4',
+                            100: '#e3eae3',
+                            200: '#c7d5c7',
+                            600: '#526e58',
+                            700: '#3e5443',
+                            800: '#2b3b2f',
+                            900: '#1c281f',
+                            950: '#121b14',
+                        },
+                        gold: {
+                            300: '#e5d1a4',
+                            400: '#d8bd82',
+                            500: '#c5a059',
+                            600: '#a6823c',
+                        },
+                        cream: '#FAF8F5',
+                    },
+                    fontFamily: {
+                        script: ['"Alex Brush"', 'cursive'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FAF8F5;
+            color: #2b3b2f;
+            overflow-x: hidden;
+        }
+        .font-script { font-family: 'Alex Brush', cursive; }
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(197, 160, 89, 0.25);
+        }
+
+        .leaf-bg {
+            background-image: radial-gradient(#c7d5c7 0.75px, transparent 0.75px), radial-gradient(#c7d5c7 0.75px, #FAF8F5 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            opacity: 0.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen text-sage-900 selection:bg-gold-300 selection:text-sage-900">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-3 bg-white/80 backdrop-blur-md border-b border-gold-300/30 flex justify-between items-center shadow-sm">
+        <div class="text-xl font-script font-bold text-gold-600 tracking-wider">M & G</div>
+        <div class="flex items-center space-x-4">
+            <button id="musicToggleBtn" onclick="toggleAudio()" class="flex items-center space-x-2 px-3 py-1.5 rounded-full border border-gold-400/50 text-xs uppercase tracking-widest text-sage-800 hover:bg-gold-300/20 transition-all">
+                <i id="musicIcon" class="fas fa-music text-gold-500 animate-pulse"></i>
+                <span id="musicText">Pausar</span>
+            </button>
+            <a href="#rsvp" class="px-4 py-1.5 rounded-full bg-sage-700 text-white text-xs uppercase tracking-widest font-medium hover:bg-sage-800 transition-all shadow-sm">
+                RSVP
+            </a>
+        </div>
+    </nav>
+
+    <!-- Audio Element (Autoplay Attempt) -->
+    <audio id="weddingAudio" loop autoplay preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-piano-114172.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20 pb-12 overflow-hidden bg-gradient-to-b from-sage-800 via-sage-700 to-sage-900 text-cream">
+        <div class="absolute inset-0 opacity-15 pointer-events-none bg-[url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+
+        <div class="relative z-10 max-w-3xl mx-auto space-y-6 animate-fade-in">
+            <div class="inline-block px-4 py-1 border-y border-gold-400/60 text-gold-300 uppercase tracking-[0.3em] text-xs font-light">
+                ¡NOS CASAMOS!
+            </div>
+            
+            <h1 class="font-script text-6xl sm:text-8xl md:text-9xl text-gold-300 drop-shadow-md my-2">
+                Mariela <span class="font-serif italic text-3xl sm:text-5xl text-white">&</span> Giovanni
+            </h1>
+
+            <p class="font-serif italic text-lg sm:text-2xl text-sage-100 font-light tracking-wide max-w-xl mx-auto">
+                "Hay tres cosas que permanecen: la fe, la esperanza y el amor; pero la más grande de ellas es el amor."
+            </p>
+            <span class="block text-xs uppercase tracking-[0.25em] text-gold-400 font-semibold">- 1 Corintios 13:13</span>
+
+            <div class="pt-8">
+                <div class="inline-flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 px-8 py-4 rounded-2xl bg-white/10 backdrop-blur-md border border-gold-400/40 shadow-xl">
+                    <div class="text-center">
+                        <span class="block font-serif text-3xl text-gold-300 font-bold">28</span>
+                        <span class="text-xs uppercase tracking-widest text-sage-200">Noviembre</span>
+                    </div>
+                    <div class="hidden sm:block text-gold-400 text-xl">•</div>
+                    <div class="text-center">
+                        <span class="block font-serif text-3xl text-gold-300 font-bold">2026</span>
+                        <span class="text-xs uppercase tracking-widest text-sage-200">Sábado</span>
+                    </div>
+                    <div class="hidden sm:block text-gold-400 text-xl">•</div>
+                    <div class="text-center">
+                        <span class="block font-serif text-3xl text-gold-300 font-bold">Concepción</span>
+                        <span class="text-xs uppercase tracking-widest text-sage-200">Chile</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6">
+                <a href="#cuenta-regresiva" class="inline-block animate-bounce text-gold-300 text-xl hover:text-white transition-colors">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="cuenta-regresiva" class="py-16 px-4 bg-cream relative z-10 border-b border-gold-300/20">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <div class="space-y-2">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-600 font-bold">Tiempo Restante</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-sage-900">Cuenta Regresiva para el Gran Día</h2>
+                <div class="w-16 h-0.5 bg-gold-400 mx-auto mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                <div class="glass-card p-4 rounded-xl shadow-sm text-center">
+                    <span id="days" class="block font-serif text-4xl sm:text-5xl font-bold text-sage-800">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gold-600 font-medium">Días</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl shadow-sm text-center">
+                    <span id="hours" class="block font-serif text-4xl sm:text-5xl font-bold text-sage-800">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gold-600 font-medium">Horas</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl shadow-sm text-center">
+                    <span id="minutes" class="block font-serif text-4xl sm:text-5xl font-bold text-sage-800">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gold-600 font-medium">Minutos</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl shadow-sm text-center">
+                    <span id="seconds" class="block font-serif text-4xl sm:text-5xl font-bold text-sage-800">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gold-600 font-medium">Segundos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 leaf-bg relative">
+        <div class="max-w-3xl mx-auto text-center glass-card p-8 sm:p-12 rounded-3xl shadow-lg border border-gold-300/40 relative">
+            <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-sage-700 text-gold-300 flex items-center justify-center text-xl shadow-md">
+                <i class="fas fa-heart"></i>
+            </div>
+            
+            <h2 class="font-script text-5xl sm:text-6xl text-gold-600 mb-6">Nuestra Bendición</h2>
+            
+            <p class="font-serif text-lg sm:text-xl text-sage-900 leading-relaxed italic mb-6">
+                "Con la bendición de Dios y el amor incondicional de nuestras familias, hemos decidido dar el paso más importante de nuestras vidas y unirnos en matrimonio."
+            </p>
+            <p class="text-sm sm:text-base text-sage-700 leading-relaxed font-light max-w-xl mx-auto">
+                Queremos invitarte a ser parte de este momento sagrado e inolvidable. Tu compañía, tus oraciones y tu alegría harán que nuestro gran día sea perfecto.
+            </p>
+
+            <div class="mt-8 pt-6 border-t border-gold-300/30 flex justify-center items-center gap-2 text-gold-600">
+                <i class="fas fa-leaf text-xs"></i>
+                <span class="text-xs uppercase tracking-widest font-semibold">Mariela & Giovanni</span>
+                <i class="fas fa-leaf text-xs transform scale-x-[-1]"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dress Code Section -->
+    <section class="py-12 px-4 bg-white border-y border-gold-300/20">
+        <div class="max-w-2xl mx-auto text-center space-y-4">
+            <div class="w-12 h-12 rounded-full bg-gold-300/20 border border-gold-400/40 text-gold-600 flex items-center justify-center text-xl mx-auto">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            
+            <div class="space-y-1">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-600 font-bold">Código de Vestimenta</span>
+                <h3 class="font-serif text-3xl text-sage-900 font-semibold">Formal</h3>
+            </div>
+
+            <p class="text-sm text-sage-700 font-light leading-relaxed max-w-md mx-auto">
+                Queremos que luzcan elegantes y radiantes en este día tan especial.
+            </p>
+
+            <div class="p-4 bg-sage-50 rounded-2xl border border-gold-300/30 max-w-md mx-auto">
+                <p class="text-xs text-sage-800 font-medium">
+                    <i class="fas fa-info-circle text-gold-600 mr-1"></i>
+                    <strong class="text-gold-600">Nota Especial:</strong> El color blanco queda reservado exclusivamente para la novia. ¡Agradecemos tu comprensión!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="itinerario" class="py-20 px-4 bg-sage-50 relative">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center space-y-2 mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-600 font-bold">¿Dónde y Cuándo?</span>
+                <h2 class="font-serif text-3xl sm:text-5xl text-sage-900">Programa del Evento</h2>
+                <div class="w-20 h-0.5 bg-gold-400 mx-auto mt-2"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Ceremony Card -->
+                <div class="bg-white rounded-2xl p-8 shadow-md border border-gold-300/30 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 rounded-full bg-sage-100 text-sage-700 flex items-center justify-center text-2xl mx-auto">
+                            <i class="fas fa-church text-gold-600"></i>
+                        </div>
+                        <div class="text-center space-y-1">
+                            <span class="text-xs uppercase tracking-widest text-gold-600 font-bold">15:00 HRS</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl text-sage-900 font-semibold">Ceremonia Religiosa</h3>
+                        </div>
+                        <p class="text-center text-sage-700 text-sm font-medium">
+                            Parroquia Primera Iglesia Bautista
+                        </p>
+                        <p class="text-center text-sage-500 text-xs font-light">
+                            Concepción, Región del Biobío
+                        </p>
+                        <div class="p-3 bg-sage-50 rounded-xl text-xs text-sage-600 text-center font-light">
+                            Te solicitamos puntualidad para dar inicio juntos a la bendición de nuestro matrimonio.
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-sage-100 text-center">
+                        <a href="https://share.google/kdStrm2pEbi2QaUUD" target="_blank" class="inline-flex items-center justify-center space-x-2 w-full py-3 px-6 rounded-xl bg-sage-700 hover:bg-sage-800 text-white text-xs uppercase tracking-widest font-semibold transition-all shadow-md group">
+                            <i class="fas fa-map-marker-alt text-gold-400 group-hover:scale-110 transition-transform"></i>
+                            <span>Ver Ubicación en Mapa</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Reception Card -->
+                <div class="bg-white rounded-2xl p-8 shadow-md border border-gold-300/30 flex flex-col justify-between hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 rounded-full bg-sage-100 text-sage-700 flex items-center justify-center text-2xl mx-auto">
+                            <i class="fas fa-glass-cheers text-gold-600"></i>
+                        </div>
+                        <div class="text-center space-y-1">
+                            <span class="text-xs uppercase tracking-widest text-gold-600 font-bold">17:00 HRS</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl text-sage-900 font-semibold">Recepción & Fiesta</h3>
+                        </div>
+                        <p class="text-center text-sage-700 text-sm font-medium">
+                            Centro de Eventos Fogón de Bursán
+                        </p>
+                        <p class="text-center text-sage-500 text-xs font-light">
+                            San Pedro de la Paz, Región del Biobío
+                        </p>
+                        <div class="p-3 bg-sage-50 rounded-xl text-xs text-sage-600 text-center font-light">
+                            Acompáñanos a celebrar con una cena especial, brindis y baile para festejar el amor.
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-sage-100 text-center">
+                        <a href="https://maps.app.goo.gl/mjHMDn6E8UKgfxKT8" target="_blank" class="inline-flex items-center justify-center space-x-2 w-full py-3 px-6 rounded-xl bg-sage-700 hover:bg-sage-800 text-white text-xs uppercase tracking-widest font-semibold transition-all shadow-md group">
+                            <i class="fas fa-map-marked-alt text-gold-400 group-hover:scale-110 transition-transform"></i>
+                            <span>Ver Ubicación en Mapa</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 px-4 bg-sage-800 text-cream relative">
+        <div class="max-w-2xl mx-auto text-center space-y-6">
+            <div class="w-12 h-12 rounded-full bg-gold-400/20 border border-gold-400/40 text-gold-300 flex items-center justify-center text-lg mx-auto">
+                <i class="fas fa-id-badge"></i>
+            </div>
+            
+            <div class="space-y-2">
+                <h3 class="font-serif text-2xl sm:text-3xl text-gold-300 font-semibold">Invitación Personal e Intransferible</h3>
+                <p class="text-sm sm:text-base text-sage-100 font-light leading-relaxed">
+                    Esta invitación está dirigida de manera personal y exclusiva a la persona que la ha recibido.
+                </p>
+            </div>
+
+            <div class="pt-4 border-t border-sage-700/60 space-y-2">
+                <div class="text-gold-300 font-serif text-xl italic">Evento Exclusivo para Adultos</div>
+                <p class="text-xs sm:text-sm text-sage-200 font-light leading-relaxed">
+                    Amamos a los niños, pero para que todos los invitados puedan relajarse y disfrutar plenamente de la fiesta, hemos organizado una celebración solo para adultos.
+                </p>
+            </div>
+
+            <p class="text-xs text-gold-400 uppercase tracking-widest pt-2">Agradecemos profundamente tu comprensión.</p>
+        </div>
+    </section>
+
+    <section id="regalo" class="py-20 px-4 bg-cream">
+        <div class="max-w-3xl mx-auto text-center space-y-8">
+            <div class="space-y-2">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-600 font-bold">Muestra de Cariño</span>
+                <h2 class="font-serif text-3xl sm:text-5xl text-sage-900">Luna de Miel & Regalo</h2>
+                <div class="w-20 h-0.5 bg-gold-400 mx-auto mt-2"></div>
+            </div>
+
+            <p class="text-sm sm:text-base text-sage-700 leading-relaxed font-light max-w-xl mx-auto">
+                Nuestro mejor regalo es tu presencia. Sin embargo, si deseas realizarnos un detalle, agradeceremos tu aporte para nuestra Luna de Miel mediante lluvia de sobres o transferencia bancaria:
+            </p>
+
+            <!-- Bank Transfer Interactive Card -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-gold-300/40 text-left relative overflow-hidden">
+                <div class="flex items-center justify-between pb-4 mb-6 border-b border-sage-100">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-gold-300/20 text-gold-600 flex items-center justify-center font-bold">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs uppercase tracking-widest text-gold-600 font-bold">Datos de Transferencia</span>
+                            <span class="font-serif text-lg font-bold text-sage-900">Banco BCI</span>
+                        </div>
+                    </div>
+                    <button onclick="copyBankData()" class="px-4 py-2 rounded-xl bg-sage-100 hover:bg-gold-300/30 text-sage-800 text-xs font-semibold tracking-wider transition-all flex items-center space-x-2">
+                        <i id="copyIcon" class="fas fa-copy text-gold-600"></i>
+                        <span id="copyText">Copiar Datos</span>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                    <div class="p-3 bg-sage-50 rounded-xl">
+                        <span class="block text-xs uppercase tracking-wider text-sage-500">Titular</span>
+                        <span class="font-semibold text-sage-900">Giovanni Mancilla</span>
+                    </div>
+                    <div class="p-3 bg-sage-50 rounded-xl">
+                        <span class="block text-xs uppercase tracking-wider text-sage-500">RUT</span>
+                        <span class="font-semibold text-sage-900">17.208.054-5</span>
+                    </div>
+                    <div class="p-3 bg-sage-50 rounded-xl">
+                        <span class="block text-xs uppercase tracking-wider text-sage-500">Tipo de Cuenta</span>
+                        <span class="font-semibold text-sage-900">Cuenta Corriente</span>
+                    </div>
+                    <div class="p-3 bg-sage-50 rounded-xl">
+                        <span class="block text-xs uppercase tracking-wider text-sage-500">N° de Cuenta</span>
+                        <span class="font-semibold text-sage-900">61403814</span>
+                    </div>
+                    <div class="p-3 bg-sage-50 rounded-xl sm:col-span-2">
+                        <span class="block text-xs uppercase tracking-wider text-sage-500">Correo Electrónico</span>
+                        <span class="font-semibold text-sage-900">giovanni.mancilla.f@gmail.com</span>
+                    </div>
+                </div>
+
+                <!-- Copy Toast Notification -->
+                <div id="copyToast" class="hidden absolute inset-0 bg-sage-900/95 backdrop-blur-sm text-white flex flex-col items-center justify-center rounded-3xl transition-all">
+                    <i class="fas fa-check-circle text-gold-400 text-4xl mb-2"></i>
+                    <span class="font-serif text-lg font-bold">¡Datos Copiados con Éxito!</span>
+                    <span class="text-xs text-sage-200">Listos para pegar en tu app bancaria.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rsvp" class="py-20 px-4 bg-sage-900 text-cream relative">
+        <div class="max-w-3xl mx-auto text-center space-y-8">
+            <div class="space-y-2">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-bold">Confirmación</span>
+                <h2 class="font-serif text-4xl sm:text-5xl text-gold-300">Confirma tu Asistencia</h2>
+                <div class="w-20 h-0.5 bg-gold-400 mx-auto mt-2"></div>
+            </div>
+
+            <p class="text-base sm:text-lg text-sage-100 font-light max-w-lg mx-auto">
+                Esperamos contar con tu presencia. Por favor confirma tu asistencia a los novios a más tardar el:
+            </p>
+
+            <div class="inline-block px-8 py-3 rounded-full border-2 border-gold-400 bg-gold-400/10 text-gold-300 font-serif text-xl sm:text-2xl font-bold tracking-wider">
+                10 de Octubre de 2026
+            </div>
+
+            <!-- Dual WhatsApp RSVP Buttons -->
+            <div class="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4 max-w-lg mx-auto">
+                <a href="https://wa.me/56956650178?text=Hola%20Mariela,%20quiero%20confirmar%20mi%20asistencia%20al%20matrimonio." target="_blank" class="w-full sm:w-1/2 inline-flex items-center justify-center space-x-3 py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold uppercase tracking-wider text-xs transition-all shadow-lg transform hover:-translate-y-0.5">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <div class="text-left">
+                        <span class="block text-[10px] opacity-80 uppercase">Confirmar con</span>
+                        <span class="text-sm font-bold">Novia (Mariela)</span>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/56942302471?text=Hola%20Giovanni,%20quiero%20confirmar%20mi%20asistencia%20al%20matrimonio." target="_blank" class="w-full sm:w-1/2 inline-flex items-center justify-center space-x-3 py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold uppercase tracking-wider text-xs transition-all shadow-lg transform hover:-translate-y-0.5">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <div class="text-left">
+                        <span class="block text-[10px] opacity-80 uppercase">Confirmar con</span>
+                        <span class="text-sm font-bold">Novio (Giovanni)</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-4 bg-sage-950 text-sage-400 text-center border-t border-sage-800">
+        <div class="max-w-xl mx-auto space-y-4">
+            <div class="font-script text-4xl text-gold-400">Mariela & Giovanni</div>
+            <p class="text-xs uppercase tracking-[0.2em]">28 de Noviembre de 2026 • Concepción, Chile</p>
+        </div>
+    </footer>
+
+    <script>
+        // Target Wedding Date: Nov 28, 2026 15:00:00
+        const weddingDate = new Date("November 28, 2026 15:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Music player logic with Autoplay handling
+        const audio = document.getElementById("weddingAudio");
+        const icon = document.getElementById("musicIcon");
+        const text = document.getElementById("musicText");
+        let isPlaying = false;
+
+        function playAudio() {
+            audio.play().then(() => {
+                isPlaying = true;
+                icon.className = "fas fa-volume-up text-gold-500 animate-pulse";
+                text.innerText = "Pausar";
+            }).catch(() => {
+                // Autoplay blocked by browser policy until user interaction
+                isPlaying = false;
+                icon.className = "fas fa-music text-sage-500";
+                text.innerText = "Música";
+            });
+        }
+
+        // Attempt autoplay immediately
+        window.addEventListener('DOMContentLoaded', () => {
+            playAudio();
+            // Fallback: start music on first touch/click anywhere on page
+            document.body.addEventListener('click', () => {
+                if (!isPlaying) playAudio();
+            }, { once: true });
+        });
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                icon.className = "fas fa-music text-sage-500";
+                text.innerText = "Música";
+                isPlaying = false;
+            } else {
+                playAudio();
+            }
+        }
+
+        // Copy bank details helper
+        function copyBankData() {
+            const bankData = 
+`DATOS DE TRANSFERENCIA - MATRIMONIO MARIELA Y GIOVANNI
+Banco: BCI
+Tipo de Cuenta: Cuenta Corriente
+N° de Cuenta: 61403814
+Titular: Giovanni Mancilla
+RUT: 17.208.054-5
+Correo: giovanni.mancilla.f@gmail.com`;
+
+            const tempInput = document.createElement("textarea");
+            tempInput.value = bankData;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const toast = document.getElementById("copyToast");
+            toast.classList.remove("hidden");
+            setTimeout(() => {
+                toast.classList.add("hidden");
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
